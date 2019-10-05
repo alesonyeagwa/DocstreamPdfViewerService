@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Syncfusion.EJ2.PdfViewer;
 using System;
 using System.Collections.Generic;
@@ -95,6 +96,17 @@ namespace DocstreamPdfViewerService.Controllers
             PdfRenderer pdfviewer = new PdfRenderer();
             var annots = pdfviewer.GetAnnotations(jsonObject);
             return GetPlainText(annots);
+        }
+        [Route("api/pdfviewer/GetAnnotations")]
+        [HttpPost]
+        public HttpResponseMessage GetAnnotations(Dictionary<string, string> jsonObject)
+        {
+            PdfRenderer pdfviewer = new PdfRenderer();
+            var annots = pdfviewer.GetAnnotations(jsonObject);
+            JObject obj = new JObject();
+            obj.Add("error", false);
+            obj.Add("response", annots);
+            return GetPlainText(JsonConvert.SerializeObject(obj));
         }
         [Route("api/pdfviewer/Download")]
         [HttpPost]
