@@ -235,8 +235,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Data\" />
+    <Folder Include="App_Data\downloads\" />
     <Folder Include="Content\data\" />
-    <Folder Include="Data\" />
+    <Folder Include="Downloads\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

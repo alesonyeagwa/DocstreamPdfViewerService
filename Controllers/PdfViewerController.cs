@@ -148,8 +148,10 @@ namespace DocstreamPdfViewerService.Controllers
         private string DownloadDocument(string url)
         {
             var path = HttpContext.Current.Request.PhysicalApplicationPath;
+            string root = System.Web.HttpContext.Current.Server.MapPath("~/Downloads");
             Guid id = Guid.NewGuid();
-            var pathToSave = path + "data\\" + id.ToString().Replace("-", "") + Path.GetExtension(url);
+            var pathToSave = Path.Combine(root, id.ToString().Replace("-", "") + Path.GetExtension(url));
+            Console.WriteLine(pathToSave);
             using (WebClient wc = new WebClient())
             {
                 wc.DownloadFile(
