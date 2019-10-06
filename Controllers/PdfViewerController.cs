@@ -149,6 +149,10 @@ namespace DocstreamPdfViewerService.Controllers
         {
             var path = HttpContext.Current.Request.PhysicalApplicationPath;
             string root = System.Web.HttpContext.Current.Server.MapPath("~/Downloads");
+            if (!Directory.Exists(root))
+            {
+                Directory.CreateDirectory(root);
+            }
             Guid id = Guid.NewGuid();
             var pathToSave = Path.Combine(root, id.ToString().Replace("-", "") + Path.GetExtension(url));
             Console.WriteLine(pathToSave);
