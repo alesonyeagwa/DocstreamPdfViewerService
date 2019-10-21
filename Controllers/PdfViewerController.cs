@@ -47,7 +47,7 @@ namespace DocstreamPdfViewerService.Controllers
                 }
             }
             jsonResult = pdfviewer.Load(stream, jsonObject);
-            return (JsonConvert.SerializeObject(jsonResult));
+            return jsonResult;
         }
         [Route("api/pdfviewer/Bookmarks")]
         [HttpPost]
